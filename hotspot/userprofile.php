@@ -26,39 +26,38 @@ if (!isset($_SESSION["mikhmon"])) {
 }
 ?>
 <div class="row">
-<div class="col-12">
-<div class="card">
-<div class="card-header align-middle">
-    <h3><i class=" fa fa-pie-chart"></i> User Profile 
-    &nbsp; | &nbsp; <a href="./?user-profile=add&session=<?= $session; ?>" title="Add User"><i class="fa fa-user-plus"></i> Add</a>
-	</h3>
-</div>
-<!-- /.card-header -->
-<div class="card-body">
-<div class="overflow box-bordered" style="max-height: 75vh"> 			   
-<table id="tFilter" class="table table-bordered table-hover text-nowrap">
-  <thead>
-  <tr> 
-		<th style="min-width:50px;" class="text-center" >
-		<?php
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header align-middle">
+        <h3><i class=" fa fa-pie-chart"></i> User Profile
+          &nbsp; | &nbsp; <a href="./?user-profile=add&session=<?= $session; ?>" title="Add User"><i
+              class="fa fa-user-plus"></i> Add</a>
+        </h3>
+      </div>
+      <!-- /.card-header -->
+      <div class="card-body">
+        <div class="overflow box-bordered" style="max-height: 75vh">
+          <table id="tFilter" class="table table-bordered table-hover text-nowrap">
+            <thead>
+              <tr>
+                <th style="min-width:50px;" class="text-center">
+                  <?php
 	if ($countprofile < 2) {
 		echo "$countprofile item  ";
 	} elseif ($countprofile > 1) {
 		echo "$countprofile items   ";
 	}
 	?></th>
-		<th class="align-middle"><?= $_name ?></th>
-		<th class="align-middle">Shared<br>Users</th>
-		<th class="align-middle">Rate<br>Limit</th>
-		<th class="align-middle"><?= $_expired_mode ?></th>
-		<th class="align-middle"><?= $_validity ?></th>
-		<th class="text-right align-middle" > <?= $_price." ".$currency; ?></th>
-		<th class="text-right align-middle" > <?= $_selling_price." ".$currency; ?></th>
-		<th class="align-middle"><?= $_lock_user ?></th>
-    </tr>
-  </thead>
-  <tbody>
-<?php
+                <th class="align-middle"><?= $_name ?></th>
+                <th class="align-middle">Shared<br>Users</th>
+                <th class="align-middle">Rate<br>Limit</th>
+                <th class="align-middle"><?= $_expired_mode ?></th>
+                <th class="align-middle"><?= $_validity ?></th>
+                <th class="align-middle"><?= $_lock_user ?></th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
 
 for ($i = 0; $i < $TotalReg; $i++) {
 
@@ -78,8 +77,10 @@ for ($i = 0; $i < $TotalReg; $i++) {
 	if(empty($pmon) || $chkpmon == "true"){$moncolor = "text-orange";}else{$moncolor = "text-green";}
 	echo "<tr>";
 	?>
-  <td style='text-align:center;'><i class='fa fa-minus-square text-danger pointer' onclick="if(confirm('Are you sure to delete profile (<?= $pname; ?>)?')){loadpage('./?remove-user-profile=<?= $pid; ?>&pname=<?= $pname ?>&session=<?= $session; ?>')}else{}" title='Remove <?= $pname; ?>'></i>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-  <?php
+              <td style='text-align:center;'><i class='fa fa-minus-square text-danger pointer'
+                  onclick="if(confirm('Are you sure to delete profile (<?= $pname; ?>)?')){loadpage('./?remove-user-profile=<?= $pid; ?>&pname=<?= $pname ?>&session=<?= $session; ?>')}else{}"
+                  title='Remove <?= $pname; ?>'></i>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                <?php
 	echo "<a title='Open User by profile " . $pname . "'  href='./?hotspot=users&profile=" . $pname . "&session=" . $session . "'><i class='fa fa-users'></i></a></td>";
 	echo "<td><a title='Open User Profile " . $pname . "' href='./?user-profile=" . $pid . "&session=" . $session . "'><i class='fa fa-edit'></i> <i class='fa fa-ci fa-circle ".$moncolor."'></i> $pname</a></td>";
 //$profiledetalis = $ARRAY[$i];echo "<td>" . $profiledetalis['name'];echo "</td>";
@@ -111,36 +112,6 @@ for ($i = 0; $i < $TotalReg; $i++) {
 
 	echo "</td>";
 
-	echo "<td style='text-align:right;'>";
-// get price
-	$getprice = explode(",", $ponlogin);
-	$price = trim($getprice[2]);
-	if ($price == "" || $price == "0") {
-		echo "";
-	} else {
-		if ($currency == in_array($currency, $cekindo['indo'])) {
-			echo number_format((float)$price, 0, ",", ".");
-		} else {
-			echo number_format((float)$price, 2);
-		}
-	}
-
-	echo "</td>";
-	echo "<td style='text-align:right;'>";
-// get price
-	$getsprice = explode(",", $ponlogin);
-	$price = trim($getsprice[4]);
-	if ($price == "" || $price == "0") {
-		echo "";
-	} else {
-		if ($currency == in_array($currency, $cekindo['indo'])) {
-			echo number_format((float)$price, 0, ",", ".");
-		} else {
-			echo number_format((float)$price, 2);
-		}
-	}
-
-	echo "</td>";
 	echo "<td>";
 
 	$getgracep = explode(",", $ponlogin);
@@ -149,10 +120,10 @@ for ($i = 0; $i < $TotalReg; $i++) {
 	echo "</tr>";
 }
 ?>
-  </tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

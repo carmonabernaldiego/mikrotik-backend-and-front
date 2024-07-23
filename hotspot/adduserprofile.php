@@ -116,113 +116,122 @@ if (!isset($_SESSION["mikhmon"])) {
 }
 ?>
 <div class="row">
-<div class="col-8">
-<div class="card box-bordered">
-  <div class="card-header">
-    <h3><i class="fa fa-plus"></i> <?= $_add.' '.$_user_profile ?> <small id="loader" style="display: none;" ><i><i class='fa fa-circle-o-notch fa-spin'></i> Processing... </i></small></h3>
-  </div>
-  <div class="card-body">
-<form autocomplete="off" method="post" action="">
-  <div>
-    <a class="btn bg-warning" href="./?hotspot=user-profiles&session=<?= $session; ?>"> <i class="fa fa-close btn-mrg"></i> <?= $_close ?></a>
-    <button type="submit" name="save" class="btn bg-primary btn-mrg" ><i class="fa fa-save btn-mrg"></i> <?= $_save ?></button>
-  </div>
-<table class="table">
-  <tr>
-    <td class="align-middle"><?= $_name ?></td><td><input class="form-control" type="text" onchange="remSpace();" autocomplete="off" name="name" value="" required="1" autofocus></td>
-  </tr>
-  <tr>
-    <td class="align-middle">Address Pool</td>
-    <td>
-    <select class="form-control " name="ppool">
-      <option>none</option>
-        <?php $TotalReg = count($getpool);
+  <div class="col-8">
+    <div class="card box-bordered">
+      <div class="card-header">
+        <h3><i class="fa fa-plus"></i> <?= $_add.' '.$_user_profile ?> <small id="loader" style="display: none;"><i><i
+                class='fa fa-circle-o-notch fa-spin'></i> Processing... </i></small></h3>
+      </div>
+      <div class="card-body">
+        <form autocomplete="off" method="post" action="">
+          <div>
+            <a class="btn bg-warning" href="./?hotspot=user-profiles&session=<?= $session; ?>"> <i
+                class="fa fa-close btn-mrg"></i> <?= $_close ?></a>
+            <button type="submit" name="save" class="btn bg-primary btn-mrg"><i class="fa fa-save btn-mrg"></i>
+              <?= $_save ?></button>
+          </div>
+          <table class="table">
+            <tr>
+              <td class="align-middle"><?= $_name ?></td>
+              <td><input class="form-control" type="text" onchange="remSpace();" autocomplete="off" name="name" value=""
+                  required="1" autofocus></td>
+            </tr>
+            <tr>
+              <td class="align-middle">Address Pool</td>
+              <td>
+                <select class="form-control " name="ppool">
+                  <option>none</option>
+                  <?php $TotalReg = count($getpool);
         for ($i = 0; $i < $TotalReg; $i++) {
 
           echo "<option>" . $getpool[$i]['name'] . "</option>";
         }
         ?>
-    </select>
-    </td>
-  </tr>
-  <tr>
-    <td class="align-middle">Shared Users</td><td><input class="form-control" type="text" size="4" autocomplete="off" name="sharedusers" value="1" required="1"></td>
-  </tr>
-  <tr>
-    <td class="align-middle">Rate limit [up/down]</td><td><input class="form-control" type="text" name="ratelimit" autocomplete="off" value="" placeholder="Example : 512k/1M" ></td>
-  </tr>
-  <tr>
-    <td class="align-middle"><?= $_expired_mode ?></td><td>
-      <select class="form-control" onchange="RequiredV();" id="expmode" name="expmode" required="1">
-        <option value="">Select...</option>
-        <option value="0">None</option>
-        <option value="rem">Remove</option>
-        <option value="ntf">Notice</option>
-        <option value="remc">Remove & Record</option>
-        <option value="ntfc">Notice & Record</option>
-      </select>
-    </td>
-  </tr>
-  <tr id="validity" style="display:none;">
-    <td class="align-middle"><?= $_validity ?></td><td><input class="form-control" type="text" id="validi" size="4" autocomplete="off" name="validity" value="" required="1"></td>
-  </tr>
-  <tr id="graceperiod" style="display:none;">
-    <td class="align-middle"><?= $_grace_period ?></td><td><input class="form-control" type="text" id="gracepi" size="4" autocomplete="off" name="graceperiod" placeholder="5m" value="5m" required="1"></td>
-  </tr>
-  <tr>
-    <td class="align-middle"><?= $_price.' '.$currency; ?></td><td><input class="form-control" type="text" size="10" min="0" name="price" value="" ></td>
-  </tr>
-  <tr>
-    <td class="align-middle"><?= $_selling_price.' '.$currency; ?></td><td><input class="form-control" type="text" size="10" min="0" name="sprice" value="" ></td>
-  </tr>
-  <tr>
-    <td><?= $_lock_user ?></td><td>
-      <select class="form-control" id="lockunlock" name="lockunlock" required="1">
-        <option value="Disable">Disable</option>
-        <option value="Enable">Enable</option>
-      </select>
-    </td>
-  </tr>
-  <tr>
-    <td class="align-middle">Parent Queue</td>
-    <td>
-    <select class="form-control " name="parent">
-      <option>none</option>
-        <?php $TotalReg = count($getallqueue);
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td class="align-middle">Shared Users</td>
+              <td><input class="form-control" type="text" size="4" autocomplete="off" name="sharedusers" value="1"
+                  required="1"></td>
+            </tr>
+            <tr>
+              <td class="align-middle">Rate limit [up/down]</td>
+              <td><input class="form-control" type="text" name="ratelimit" autocomplete="off" value=""
+                  placeholder="Example : 512k/1M"></td>
+            </tr>
+            <tr>
+              <td class="align-middle"><?= $_expired_mode ?></td>
+              <td>
+                <select class="form-control" onchange="RequiredV();" id="expmode" name="expmode" required="1">
+                  <option value="">Select...</option>
+                  <option value="0">None</option>
+                  <option value="rem">Remove</option>
+                  <option value="ntf">Notice</option>
+                  <option value="remc">Remove & Record</option>
+                  <option value="ntfc">Notice & Record</option>
+                </select>
+              </td>
+            </tr>
+            <tr id="validity" style="display:none;">
+              <td class="align-middle"><?= $_validity ?></td>
+              <td><input class="form-control" type="text" id="validi" size="4" autocomplete="off" name="validity"
+                  value="" required="1"></td>
+            </tr>
+            <tr id="graceperiod" style="display:none;">
+              <td class="align-middle"><?= $_grace_period ?></td>
+              <td><input class="form-control" type="text" id="gracepi" size="4" autocomplete="off" name="graceperiod"
+                  placeholder="5m" value="5m" required="1"></td>
+            </tr>
+            <tr>
+              <td><?= $_lock_user ?></td>
+              <td>
+                <select class="form-control" id="lockunlock" name="lockunlock" required="1">
+                  <option value="Disable">Disable</option>
+                  <option value="Enable">Enable</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td class="align-middle">Parent Queue</td>
+              <td>
+                <select class="form-control " name="parent">
+                  <option>none</option>
+                  <?php $TotalReg = count($getallqueue);
         for ($i = 0; $i < $TotalReg; $i++) {
 
           echo "<option>" . $getallqueue[$i]['name'] . "</option>";
         }
         ?>
-    </select>
-  </td>
-  </tr>
-</table>
-</form>
-</div>
-</div>
-</div>
-<div class="col-4">
-  <div class="card">
-    <div class="card-header">
-      <h3><i class="fa fa-book"></i> <?= $_readme ?></h3>
+                </select>
+              </td>
+            </tr>
+          </table>
+        </form>
+      </div>
     </div>
-    <div class="card-body">
-<table class="table">
-    <tr>
-    <td colspan="2">
-      <p style="padding:0px 5px;">
-        <?= $_details_user_profile ?>
-      </p>
-      <p style="padding:0px 5px;">
-        <?= $_format_validity ?>
-      </p>
-    </td>
-  </tr>
-</table>
-</div>
-</div>
-</div>
+  </div>
+  <div class="col-4">
+    <div class="card">
+      <div class="card-header">
+        <h3><i class="fa fa-book"></i> <?= $_readme ?></h3>
+      </div>
+      <div class="card-body">
+        <table class="table">
+          <tr>
+            <td colspan="2">
+              <p style="padding:0px 5px;">
+                <?= $_details_user_profile ?>
+              </p>
+              <p style="padding:0px 5px;">
+                <?= $_format_validity ?>
+              </p>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
 <script type="text/javascript">
 function remSpace() {

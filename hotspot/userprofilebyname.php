@@ -242,12 +242,6 @@ if (!isset($_SESSION["mikhmon"])) {
     <td><?= $_validity ?></td><td><input class="form-control" type="text" id="validi" size="4" autocomplete="off" name="validity" value="<?= $getvalid; ?>" required="1"></td>
   </tr>
   <tr>
-    <td><?= $_price." ". $currency; ?></td><td><input class="form-control" type="text" min="0" name="price" value="<?= $getprice; ?>" ></td>
-  </tr>
-  <tr>
-    <td class="align-middle"><?= $_selling_price.' '.$currency; ?></td><td><input class="form-control" type="text" size="10" min="0" name="sprice" value="<?= $getsprice; ?>" ></td>
-  </tr>
-  <tr>
     <td><?= $_lock_user ?></td><td>
       <select class="form-control" id="lockunlock" name="lockunlock" required="1">
         <option value="<?= $getlocku; ?>"><?= $getlocku; ?></option>
